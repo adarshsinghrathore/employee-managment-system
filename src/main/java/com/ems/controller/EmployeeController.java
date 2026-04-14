@@ -70,4 +70,19 @@ public class EmployeeController {
 
         return ResponseEntity.ok(employeeService.findPaginated(page, size));
     }
+     @GetMapping("/sort")
+    public ResponseEntity<List<Employee>> getSortedEmployees(
+            @RequestParam String sortBy,
+            @RequestParam String direction) {
+
+        return ResponseEntity.ok(
+                employeeService.getEmployeeSorted(sortBy, direction)
+        );
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Employee>> searchEmployees(
+            @RequestParam String keyword) {
+
+        return ResponseEntity.ok(employeeService.searchEmployees(keyword));
+    }
 }
