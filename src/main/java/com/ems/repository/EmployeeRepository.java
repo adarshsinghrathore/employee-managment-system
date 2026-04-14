@@ -7,6 +7,7 @@ import com.ems.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
-	
+		 List<Employee> findByfirstnameContainingIgnoreCase(String keyword);
+
 
 }
