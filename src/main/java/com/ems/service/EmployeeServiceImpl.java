@@ -64,7 +64,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(existing);
 	}
 
+	@Override
+	public List<Employee> getEmployeeSorted(String sortBy, String direction) {
+		 Sort sort = direction.equalsIgnoreCase("asc") ?
+		            Sort.by(sortBy).ascending() :
+		            Sort.by(sortBy).descending();
+
+		    return employeeRepository.findAll(sort);
+	}
+
+	@Override
+	public List<Employee> searchEmployees(String keyword) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findByfirstnameContainingIgnoreCase(keyword);
+	}
+
 	
+
 	
 	
 	
